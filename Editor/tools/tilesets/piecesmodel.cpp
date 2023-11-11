@@ -317,8 +317,8 @@ void ElementsListModel::updateSort()
 Qt::ItemFlags ElementsListModel::flags(const QModelIndex &index) const
 {
     if (index.isValid())
-        return (QAbstractListModel::flags(index)|Qt::ItemIsDragEnabled);
-    return Qt::ItemIsDropEnabled;
+        return (QAbstractListModel::flags(index)|Qt::ItemIsDragEnabled|Qt::ItemIsSelectable);
+    return Qt::ItemIsDropEnabled|Qt::ItemIsSelectable;
 }
 
 QStringList ElementsListModel::mimeTypes() const

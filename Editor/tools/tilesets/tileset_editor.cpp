@@ -23,6 +23,7 @@
 #include <QKeyEvent>
 
 #include <common_features/app_path.h>
+#include <common_features/items.h>
 #include <common_features/util.h>
 #include <editing/_scenes/level/lvl_scene.h>
 #include <editing/_scenes/world/wld_scene.h>
@@ -66,9 +67,10 @@ TilesetEditor::TilesetEditor(DataConfig *conf, QGraphicsScene *scene, QWidget *p
     ui->specific->setVisible(m_mode != GFX_Staff && !isGlobal);
     ui->specific->setChecked(m_mode != GFX_Staff);
     ui->delete_me->setVisible(false);
+    ui->autotileFrame->setVisible(false);
 
     ui->tilesetLayoutWidgetContainer->insertWidget(0, m_tileset = (new tileset(conf, ItemTypes::LVL_Block, nullptr, 32, 5, 5, scn)));
-
+    connect(m_tileset, &tileset::selectedItem, this, &changeAutotileSelection);
     m_model = new ElementsListModel(conf, ElementsListModel::LEVELPIECE_BLOCK, 32, nullptr, this);
     ui->listView->setModel(m_model);
 
@@ -595,8 +597,6 @@ void TilesetEditor::openTileset(QString filePath, QString openPath)
         ui->spin_height->setValue(static_cast<int>(simple.rows));
         ui->comboBox->setCurrentIndex(static_cast<int>(simple.type));
         setUpItems(simple.type);
-        QString notCustomPath = dynamic_cast<LvlScene *>(scn)->m_data->meta.path + "/";
-        bool isGlobal = QDir(filePath) == m_conf->config_dir + "../../tilesets/";
         m_tileset->loadSimpleTileset(simple);
     }
 
@@ -726,4 +726,35 @@ void TilesetEditor::keyPressEvent(QKeyEvent *event)
 void TilesetEditor::on_search_textChanged(const QString &arg1)
 {
     m_model->setFilter(arg1);
+}
+
+// AUTOTILE
+
+void TilesetEditor::changeAutotileSelection(int type, long id) {
+    QPixmap scaledPix = QPixmap();
+    Items::getItemGFX(type, id, scaledPix, scn, false, QSize(32, 32));
+    ui->autotileSelectedImg->setPixmap(scaledPix);
+}
+
+void TilesetEditor::on_enableAutotile_clicked() {
+    ui->autotileFrame->setVisible(ui->enableAutotile->isChecked());
+}
+
+void TilesetEditor::on_addBrush_clicked() {
+    QListWidgetItem* item = new QListWidgetItem;
+    item->setText("Brush " + QString(ui->autotileBrushView->count() + 1));
+    item->setFlags(Qt::ItemIsSelectable);
+
+    item->setData(Qt::UserRole, ui->autotileBrushView->count() + 1);
+    ui->autotileBrushView->addItem(item);
+
+    item->setSelected(true);
+}
+
+void TilesetEditor::on_removeBrush_clicked() {
+    ui->autotileBrushView->removeItemWidget(ui->autotileBrushView->currentItem());
+}
+
+void TilesetEditor::on_autotileBrushView_selectionChanged() {
+    ui->neighbourSpinSelf->setValue((ui->autotileBrushView->currentItem()->data(Qt::UserRole)).toInt());
 }

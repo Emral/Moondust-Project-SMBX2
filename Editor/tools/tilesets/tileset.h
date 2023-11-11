@@ -58,6 +58,7 @@ public:
 
 signals:
     void clickedItem(int type, long id);
+    void selectedItem(int type, long id);
 
 public slots:
     void setRows(int rows);

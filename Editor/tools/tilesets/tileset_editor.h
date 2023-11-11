@@ -67,6 +67,13 @@ private slots:
     void on_delete_me_clicked();
     void on_search_textChanged(const QString &arg1);
 
+    void changeAutotileSelection(int type, long id);
+
+    void on_enableAutotile_clicked();
+    void on_addBrush_clicked();
+    void on_removeBrush_clicked();
+    void on_autotileBrushView_selectionChanged();
+
 signals:
     void windowShowed();
 

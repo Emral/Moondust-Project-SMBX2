@@ -203,6 +203,8 @@ void tileset::mousePressEvent(QMouseEvent *event)
     {
         emit clickedItem(m_type, pieceID[found]);
         return;
+    } else {
+        emit selectedItem(m_type, pieceID[found]);
     }
 
     QPixmap pixmap = piecePixmaps[found];
