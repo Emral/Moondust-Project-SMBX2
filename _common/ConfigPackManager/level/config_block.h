@@ -43,19 +43,6 @@ struct BlockSetup : BaseSetup
                const BlockSetup* merge_with = nullptr,
                PGEString *error = nullptr);
 
-    //! Alignment grid size
-    uint32_t        grid = 32;
-    //! Alignment grid offset X in pixels
-    int32_t         grid_offset_x = 0;
-    //! Alignment grid offset Y in pixels
-    int32_t         grid_offset_y = 0;
-    //! Filter group name
-    PGEString       group = "_NoGroup";
-    //! Filter category name
-    PGEString       category = "_Other";
-    //! Detailed description of element
-    PGEString       description = "";
-
     //! Is block allowed to have any size?
     bool            sizable = false;
     //! Width of the border of sizable block texture (common)

@@ -132,6 +132,10 @@ void AppSettings::loadSettings()
     ui->screengrabW->setValue(GlobalSettings::screenGrab.width);
     ui->screengrabH->setValue(GlobalSettings::screenGrab.height);
     ui->lockedItemOpacity->setValue(GlobalSettings::LvlItemDefaults.LockedItemOpacity);
+    ui->npcRandomDirOpacity->setValue(GlobalSettings::LvlItemDefaults.NPCRandomDirectionIndicatorOpacity);
+    ui->npcGeneratorOpacity->setValue(GlobalSettings::LvlItemDefaults.NPCGeneratorIndicatorOpacity);
+    ui->npcTalkingOpacity->setValue(GlobalSettings::LvlItemDefaults.NPCTalkingIndicatorOpacity);
+    ui->blockSlipperyOpacity->setValue(GlobalSettings::LvlItemDefaults.BlockSlipperyIndicatorOpacity);
 
     LogWriter::loadLogLevels(ui->logLevel);
     ui->logLevel->setCurrentIndex(int(LogWriter::logLevel));
@@ -254,6 +258,11 @@ void AppSettings::on_buttonBox_accepted()
     GlobalSettings::LvlOpts.autoSave_interval = ui->autoSaveInterval->value();
 
     GlobalSettings::LvlItemDefaults.LockedItemOpacity = ui->lockedItemOpacity->value();
+
+    GlobalSettings::LvlItemDefaults.NPCGeneratorIndicatorOpacity    = ui->npcGeneratorOpacity->value();
+    GlobalSettings::LvlItemDefaults.NPCRandomDirectionIndicatorOpacity   = ui->npcRandomDirOpacity->value();
+    GlobalSettings::LvlItemDefaults.NPCTalkingIndicatorOpacity      = ui->npcTalkingOpacity->value();
+    GlobalSettings::LvlItemDefaults.BlockSlipperyIndicatorOpacity   = ui->blockSlipperyOpacity->value();
 
     GlobalSettings::LvlOpts.default_zoom = static_cast<unsigned int>(ui->defaultZoom->value());
 

@@ -189,6 +189,7 @@ list(APPEND PGE_EDITOR_UI
 set(RESOURCE
     ${CMAKE_CURRENT_SOURCE_DIR}/_resources/appicon/appicon.qrc
     ${CMAKE_CURRENT_SOURCE_DIR}/_resources/arrows/arrows.qrc
+    ${CMAKE_CURRENT_SOURCE_DIR}/_resources/block/block.qrc
     ${CMAKE_CURRENT_SOURCE_DIR}/_resources/contributors/contributors.qrc
     ${CMAKE_CURRENT_SOURCE_DIR}/_resources/dock/dock.qrc
     ${CMAKE_CURRENT_SOURCE_DIR}/_resources/dummies/dummies.qrc

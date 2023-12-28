@@ -102,6 +102,10 @@ void MainWindow::loadSettings()
         GlobalSettings::LvlOpts.default_zoom = settings.value("default-zoom", 100).toUInt();
 
         GlobalSettings::LvlItemDefaults.LockedItemOpacity = settings.value("locked-item-opacity", 0.3).toDouble();
+        GlobalSettings::LvlItemDefaults.NPCGeneratorIndicatorOpacity = settings.value("npc-generator-indicator-opacity", 0.4).toDouble();
+        GlobalSettings::LvlItemDefaults.NPCRandomDirectionIndicatorOpacity = settings.value("npc-random-direction-indicator-opacity", 0.65).toDouble();
+        GlobalSettings::LvlItemDefaults.NPCTalkingIndicatorOpacity = settings.value("npc-talking-indicator-opacity", 0.65).toDouble();
+        GlobalSettings::LvlItemDefaults.BlockSlipperyIndicatorOpacity = settings.value("block-slippery-indicator-opacity", 0.65).toDouble();
         GlobalSettings::LvlItemDefaults.npc_direction = settings.value("defaults-npc-directuin", -1).toInt();
         GlobalSettings::LvlItemDefaults.npc_generator_type = settings.value("defaults-npc-gen-type", 1).toInt();
         GlobalSettings::LvlItemDefaults.npc_generator_delay = settings.value("defaults-npc-gen-delay", 20).toInt();

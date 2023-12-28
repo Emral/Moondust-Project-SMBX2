@@ -919,8 +919,9 @@ void TilesetItemBox::makeAllTilesets()
     }
     QFileInfo ourFile(edit->currentFile());
     savePath = ourFile.absoluteDir().path() + "/" + ourFile.completeBaseName() + "/";
-
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
     ui->TileSetsCategories->setTabVisible(1, mw()->configs.global_tilesets.count() > 0);
+#endif
     favTilesetContentsMap.clear();
     m_favorites = SimpleTileset();
     QDir target(savePath);

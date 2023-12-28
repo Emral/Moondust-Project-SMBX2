@@ -26,7 +26,7 @@ jobs:
             generator: "Ninja",
             extra_path: "/home/runner/Qt/5.15.2_static/bin",
             build_type: "Release",
-            upload_directory: "www/builds/ubuntu-18-04/",
+            upload_directory: "codehaus.moe/www/builds/ubuntu-18-04/",
             qt_download: "https://wohlsoft.ru/docs/Software/QtBuilds/qt-5.15.2-static-ubuntu-18-04-x64-gcc8.tar.bz2",
             qt_install_dir: "/home/runner/Qt",
             qt_ver: "5.15.2_static",

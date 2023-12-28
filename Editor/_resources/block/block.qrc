@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/block">
+        <file>slippery.png</file>
+    </qresource>
+</RCC>

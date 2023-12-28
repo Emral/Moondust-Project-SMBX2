@@ -44,6 +44,10 @@ void MainWindow::setDefaults()
     GlobalSettings::tools_sox_bin_path = ApplicationPath + GlobalSettings::tools_sox_bin_path;
 
     GlobalSettings::LvlItemDefaults.LockedItemOpacity               = 0.3;
+    GlobalSettings::LvlItemDefaults.NPCGeneratorIndicatorOpacity    = 0.4;
+    GlobalSettings::LvlItemDefaults.NPCRandomDirectionIndicatorOpacity   = 0.65;
+    GlobalSettings::LvlItemDefaults.NPCTalkingIndicatorOpacity      = 0.65;
+    GlobalSettings::LvlItemDefaults.BlockSlipperyIndicatorOpacity   = 0.65;
 
     GlobalSettings::LvlItemDefaults.npc_direction                   = -1;
     GlobalSettings::LvlItemDefaults.npc_generator_type              = 1;
