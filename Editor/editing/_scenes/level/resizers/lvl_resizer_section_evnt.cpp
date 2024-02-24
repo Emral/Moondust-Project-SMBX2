@@ -49,7 +49,7 @@ void LvlScene::setEventSctSizeResizer(long event, bool enabled, bool accept)
         this->addItem(m_resizeBox);
         m_resizeBox->setPos(l, t);
         m_resizeBox->m_resizerType = ItemResizer::Resizer_InEventSection;
-        m_resizeBox->m_minSize = QSizeF(800, 600);
+        m_resizeBox->m_minSize = QSizeF(GlobalSettings::gameProps.screenWidth, GlobalSettings::gameProps.screenHeight);
         this->setFocus(Qt::ActiveWindowFocusReason);
         SwitchEditingMode(MODE_Resizing);
         m_mw->resizeToolbarVisible(true);

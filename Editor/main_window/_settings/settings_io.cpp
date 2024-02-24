@@ -241,6 +241,13 @@ void MainWindow::loadSettings()
     }
     settings.endGroup();
 
+    settings.beginGroup("game-props");
+    {
+        GlobalSettings::gameProps.screenWidth = settings.value("screen-width", 800).toInt();
+        GlobalSettings::gameProps.screenHeight = settings.value("screen-height", 600).toInt();
+    }
+    settings.endGroup();
+
     settings.beginGroup("Recent");
     {
         for(int i = 1; i <= 10; i++)
@@ -392,6 +399,13 @@ void MainWindow::saveSettings()
         settings.setValue("grab-size", GlobalSettings::screenGrab.sizeType);
         settings.setValue("grab-w", GlobalSettings::screenGrab.width);
         settings.setValue("grab-h", GlobalSettings::screenGrab.height);
+    }
+    settings.endGroup();
+
+    settings.beginGroup("game-props");
+    {
+        settings.setValue("screen-width", GlobalSettings::gameProps.screenWidth);
+        settings.setValue("screen-height", GlobalSettings::gameProps.screenHeight);
     }
     settings.endGroup();
 

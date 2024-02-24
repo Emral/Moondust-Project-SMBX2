@@ -253,8 +253,8 @@ void LvlScene::drawForeground(QPainter *painter, const QRectF &rect)
     if(m_opts.camera_grid_show)
     {
         // Get viewport size from config pack engine.ini settings
-        int gridSizeX = m_configs->engine.screen_w;
-        int gridSizeY = m_configs->engine.screen_h;
+        int gridSizeX = GlobalSettings::gameProps.screenWidth;
+        int gridSizeY = GlobalSettings::gameProps.screenHeight;
 
         // Round y-axis camera grid to a multiple of default block grid size, since the player will normally stand on
         // a block and thus typical camera position will be relative to that
@@ -266,7 +266,7 @@ void LvlScene::drawForeground(QPainter *painter, const QRectF &rect)
         // Get top-left corner
         qreal left = int(rect.left() - sectionOffset) - (int(rect.left() - sectionOffset) % gridSizeX) + sectionOffset;
         qreal top = int(rect.top() - sectionOffset) - (int(rect.top() - sectionOffset) % gridSizeY) + sectionOffset;
-        qreal cam_top = top + (gridSizeY - m_configs->engine.screen_h);
+        qreal cam_top = top + (gridSizeY - GlobalSettings::gameProps.screenHeight);
         if (cam_top > (rect.top() + gridSizeY))
             cam_top -= gridSizeY;
 
@@ -288,7 +288,7 @@ void LvlScene::drawForeground(QPainter *painter, const QRectF &rect)
         painter->drawLines(lines.data(), lines.size());
 
         // Draw extra top-edge lines fainter
-        if (gridSizeY != (int)m_configs->engine.screen_h)
+        if (gridSizeY != (int)GlobalSettings::gameProps.screenHeight)
         {
             painter->setOpacity(0.5);
             painter->setPen(QPen(QBrush(QColor(128, 0, 128)), 0, Qt::SolidLine));

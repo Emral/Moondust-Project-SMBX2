@@ -44,6 +44,7 @@ SETTINGS_ItemDefaults GlobalSettings::LvlItemDefaults;
 
 SETTINGS_TestSettings GlobalSettings::testing; //Testing settings
 SETTINGS_ScreenGrabSettings GlobalSettings::screenGrab;
+SETTINGS_GamePropertiesSettings GlobalSettings::gameProps;
 
 SETTINGS_Extra GlobalSettings::extra;
 

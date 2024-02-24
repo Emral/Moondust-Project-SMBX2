@@ -68,7 +68,6 @@ AppSettings::AppSettings(QWidget *parent) :
             this->setAttribute(Qt::WA_TranslucentBackground, true);
             QtWin::extendFrameIntoClientArea(this, -1, -1, -1, -1);
             QtWin::enableBlurBehindWindow(this);
-            ui->gridLayout->setMargin(0);
         }
         else
         {
@@ -131,6 +130,11 @@ void AppSettings::loadSettings()
     ui->screengrabCustom->setChecked(GlobalSettings::screenGrab.sizeType == SETTINGS_ScreenGrabSettings::GRAB_Custom);
     ui->screengrabW->setValue(GlobalSettings::screenGrab.width);
     ui->screengrabH->setValue(GlobalSettings::screenGrab.height);
+
+    ui->screenSizeW->setValue(GlobalSettings::gameProps.screenWidth);
+    ui->screenSizeH->setValue(GlobalSettings::gameProps.screenHeight);
+
+
     ui->lockedItemOpacity->setValue(GlobalSettings::LvlItemDefaults.LockedItemOpacity);
     ui->npcRandomDirOpacity->setValue(GlobalSettings::LvlItemDefaults.NPCRandomDirectionIndicatorOpacity);
     ui->npcGeneratorOpacity->setValue(GlobalSettings::LvlItemDefaults.NPCGeneratorIndicatorOpacity);
@@ -273,6 +277,9 @@ void AppSettings::on_buttonBox_accepted()
 
     GlobalSettings::screenGrab.width = ui->screengrabW->value();
     GlobalSettings::screenGrab.height = ui->screengrabH->value();
+
+    GlobalSettings::gameProps.screenWidth = ui->screenSizeW->value();
+    GlobalSettings::gameProps.screenHeight = ui->screenSizeH->value();
 
     if(ui->MView_SubWindows->isChecked())
         GlobalSettings::MainWindowView = QMdiArea::SubWindowView;

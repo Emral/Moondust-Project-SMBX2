@@ -88,6 +88,12 @@ struct SETTINGS_TestSettings
     int  p2_vehicleType = 0;
 };
 
+struct SETTINGS_GamePropertiesSettings
+{
+    int screenWidth   = 800;
+    int screenHeight  = 600;
+};
+
 struct SETTINGS_ScreenGrabSettings
 {
     enum GrabSize
@@ -120,6 +126,8 @@ public:
     static SETTINGS_TestSettings testing;
     //! Screen capture settings
     static SETTINGS_ScreenGrabSettings screenGrab;
+    //! Values relevant to the game
+    static SETTINGS_GamePropertiesSettings gameProps;
     //! Extra settings
     static SETTINGS_Extra extra;
 

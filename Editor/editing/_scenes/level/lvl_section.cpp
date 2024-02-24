@@ -60,11 +60,11 @@ void LvlScene::InitSection(int sect)
     {
         //set section size/position values
         x = -200000 + 20000 * sect; //left
-        y = -200600 + 20000 * sect; //top
+        y = (-200000 - GlobalSettings::gameProps.screenHeight) + 20000 * sect; //top
 
         h = -200000 + 20000 * sect; //bottom
 
-        w = -199200 + 20000 * sect; //right
+        w = (-200000 + GlobalSettings::gameProps.screenWidth) + 20000 * sect; //right
         m_mw->setSectionUsed(sect, true);
         bool found = false;
 
